@@ -29,9 +29,9 @@
       <sdc:side-drawer-content />
     </drawer:RadSideDrawer.drawerContent>
     <drawer:RadSideDrawer.mainContent>
-      <GridLayout rows="auto, 44, *" columns="*">
+      <GridLayout rows="auto, *" columns="*">
 
-        <GridLayout row="1" rowSpan="2" cssClass="content-background-main" />
+        <GridLayout row="1" cssClass="content-background-main" />
 
         <!-- Segmented bar navigation -->
         <!-- TODO: I have failed to set the selectedBackgroundColor in CSS -->
@@ -45,52 +45,51 @@
           </SegmentedBar.items>
         </SegmentedBar>
 
-        <!-- Show New filter -->
-        <Button row="1"
-          ios:text="{{ showOnlyNew ? 'Show all' : 'Show only new' }}"
-          android:text="{{ showOnlyNew ? 'SHOW ALL' : 'SHOW ONLY NEW' }}"
-          cssClass="show-new-btn" tap="{{ toggleShowNew }}" />
-
         <!-- Featured examples -->
         <GridLayout visibility="{{ selectedScreen===0 ? 'visible' : 'collapsed' }}" row="2" columns="*" rows="*">
           <ScrollView>
-            <Repeater items="{{ featuredExamples }}">
-              <Repeater.itemsLayout>
+            <GridLayout rows="44, auto">
+              <!-- Show New filter -->
+              <Button
+                  ios:text="{{ showOnlyNew ? 'Show all' : 'Show only new' }}"
+                  android:text="{{ showOnlyNew ? 'SHOW ALL' : 'SHOW ONLY NEW' }}"
+                  cssClass="show-new-btn" tap="{{ toggleShowNew }}" />
+              <Repeater row="1" items="{{ featuredExamples }}">
+                <Repeater.itemsLayout>
+                  <WrapLayout horizontalAlignment="left" itemWidth="{{ useListLayout ? (screenWidth - 1) : (screenWidth - 1) / 2 }}" />
+                </Repeater.itemsLayout>
+                <Repeater.itemTemplate>
+                  <StackLayout touch="tileTouch" tap="navigateToExample" cssClass="example-item"
+                      orientation="{{ $parents['Repeater'].useListLayout, $parents['Repeater'].useListLayout ? 'horizontal' : 'vertical' }}"
+                      visibility="{{ $parents['Repeater'].showOnlyNew, (!$parents['Repeater'].showOnlyNew || isNew) ? 'visible' : 'collapsed' }}">
 
-                <!-- TODO: The WrapLayout can handle better the multy-column request.
-                  In the best scenario we will set minimum-width of an item
-                  and have the panel accomodate as much equal sized columns as possible. -->
-                <!-- TODO: Sticking to 2 columns won't look nice on landscape and tablets. -->
-                <!-- NOTE: In iOS iPhone-6 iOS 8.3 if we do not subtract 1px the grind will show only one column. -->
-                <!-- TODO: When the orientation is changed for a first time this doesn't seem to re-evaluate on iOS. It works on subsequent rotations. -->
-                <WrapLayout horizontalAlignment="left" itemWidth="{{ useListLayout ? (screenWidth - 1) : (screenWidth - 1) / 2 }}" />
-              </Repeater.itemsLayout>
-              <Repeater.itemTemplate>
-                <StackLayout touch="tileTouch" tap="navigateToExample" cssClass="example-item"
-                  orientation="{{ $parents['Repeater'].useListLayout, $parents['Repeater'].useListLayout ? 'horizontal' : 'vertical' }}"
-                  visibility="{{ $parents['Repeater'].showOnlyNew, (!$parents['Repeater'].showOnlyNew || isNew) ? 'visible' : 'collapsed' }}">
+                    <GridLayout columns="*" rows="*"
+                        cssClass="{{ $parents['Repeater'].useListLayout, $parents['Repeater'].useListLayout ? 'example-img-list' : 'example-img-wrap' }}">
+                      <Image src="{{ image }}" cssClass="{{ isNew ? 'list-example-image-new' : 'list-example-image' }}" stretch="aspectFit" />
+                      <Image src="res://ic_new" cssClass="new" visibility="{{ isNew ? 'visible' : 'collapsed' }}" stretch="none" />
+                    </GridLayout>
 
-                  <GridLayout columns="*" rows="*"
-                      cssClass="{{ $parents['Repeater'].useListLayout, $parents['Repeater'].useListLayout ? 'example-img-list' : 'example-img-wrap' }}">
-                    <Image src="{{ image }}" cssClass="{{ isNew ? 'list-example-image-new' : 'list-example-image' }}" stretch="aspectFit" />
-                    <Image src="res://ic_new" cssClass="new" visibility="{{ isNew ? 'visible' : 'collapsed' }}" stretch="none" />
-                  </GridLayout>
-
-                  <StackLayout>
-                    <Label text="{{ title }}" 
-                      cssClass="{{ $parents['Repeater'].useListLayout, $parents['Repeater'].useListLayout ? 'example-title-list' : 'example-title-wrap' }}" />
-                    <Label text="{{ controls }}" textWrap="true"
-                      cssClass="{{ $parents['Repeater'].useListLayout, $parents['Repeater'].useListLayout ? 'used-controls-list' : 'used-controls-wrap' }}"/>
+                    <StackLayout>
+                      <Label text="{{ title }}" 
+                          cssClass="{{ $parents['Repeater'].useListLayout, $parents['Repeater'].useListLayout ? 'example-title-list' : 'example-title-wrap' }}" />
+                      <Label text="{{ controls }}" textWrap="true"
+                          cssClass="{{ $parents['Repeater'].useListLayout, $parents['Repeater'].useListLayout ? 'used-controls-list' : 'used-controls-wrap' }}"/>
+                    </StackLayout>
                   </StackLayout>
-                </StackLayout>
-              </Repeater.itemTemplate>
-            </Repeater>
+                </Repeater.itemTemplate>
+              </Repeater>
+            </GridLayout>
           </ScrollView>
         </GridLayout>
 
         <!-- All examples -->
-        <GridLayout visibility="{{ selectedScreen===1 ? 'visible' : 'collapsed' }}" row="2" columns="*" rows="*">
-          <Repeater items="{{ exampleGroups }}">
+        <GridLayout visibility="{{ selectedScreen===1 ? 'visible' : 'collapsed' }}" row="2" rows="44, auto" columns="*">
+          <!-- Show New filter -->
+          <Button
+              ios:text="{{ showOnlyNew ? 'Show all' : 'Show only new' }}"
+              android:text="{{ showOnlyNew ? 'SHOW ALL' : 'SHOW ONLY NEW' }}"
+              cssClass="show-new-btn" tap="{{ toggleShowNew }}" />
+          <Repeater row="1" items="{{ exampleGroups }}">
             <Repeater.itemsLayout>
 
               <!-- TODO: The WrapLayout can handle better the multy-column request.
