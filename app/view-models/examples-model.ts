@@ -33,6 +33,15 @@ export var groups: Array<ExampleGroup> = [
         tint: "#034d8d",
         examples: [
             {
+                title: "Animations",
+                image: "res://screen_layouts",
+                controls: "",
+                path: "examples/animations/menu",
+                info: "TBD",
+                isFeatured: true,
+                isNew: false
+            },
+            {
                 title: "Layouts",
                 image: "res://screen_layouts",
                 controls: "stack-layout grid-layout wrap-layout dock-layout absolute-layout",
@@ -41,7 +50,6 @@ export var groups: Array<ExampleGroup> = [
                 isFeatured: true,
                 isNew: false
             },
-
             {
                 title: "User Profile",
                 image: "res://screen_user_profile",

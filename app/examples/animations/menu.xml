@@ -1,0 +1,27 @@
+<examples:ExamplePage xmlns="http://www.nativescript.org/tns.xsd"
+    xmlns:examples="examples/example-base-page"
+    navigatingTo="pageNavigatingTo"
+    backgroundSpanUnderStatusBar="true"
+    actionBarHidden="true"
+    id="menu-page">
+    <GridLayout id="root-grid">
+        <!-- may not be cool on tablet -->
+        <GridLayout id="card-grid">
+            <GridLayout id="menu-button">
+                <Label text="X" />
+            </GridLayout>
+            <GridLayout id="user-photo">
+            </GridLayout>
+            <StackLayout id="user-details">
+                <Label text="Kendra Jonson" />
+                <Label text="33 followers" />
+            </StackLayout>
+            <GridLayout id="images" rows="* * *" columns="* *">
+                <GridLayout row="0" col="0" rowSpan="2" backgroundColor="red" />
+                <GridLayout row="0" col="1" backgroundColor="orange" />
+                <GridLayout row="1" col="1" backgroundColor="blue" />
+                <GridLayout row="2" col="0" colSpan="2" backgroundColor="pink" />
+            </GridLayout>
+        </GridLayout>
+    </GridLayout>
+</examples:ExamplePage>

@@ -1,0 +1,42 @@
+#menu-page {
+    background-color: orange;
+}
+
+#card-grid {
+    background-color: purple;
+    border-radius: 10;
+    margin: 10px;
+}
+
+#menu-button {
+    horizontal-align: left;
+    vertical-align: top;
+    margin: 5;
+}
+
+#user-photo {
+    background-color: gray;
+    border-width: 3;
+    border-color: white;
+    border-radius: 50;
+    width: 100px;
+    height: 100px;
+    horizontal-align: center;
+    vertical-align: top;
+    margin: 40 0 0 0;
+}
+
+#user-details {
+    margin: 150 0 0 0;
+    vertical-align: top;
+}
+#user-details Label {
+    horizontal-align: center;
+}
+
+#images {
+    margin: 190 0 0 0;
+}
+#images GridLayout {
+    margin: 3px;
+}
