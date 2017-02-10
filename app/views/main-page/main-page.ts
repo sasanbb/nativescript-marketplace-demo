@@ -30,10 +30,10 @@ export function pageLoaded(args) {
     if (platform.device.os === platform.platformNames.ios) {
         let examplesList = <LayoutBase>page.getViewById("examples-wrap-layout");
         for (let i = 0, length = examplesList.getChildrenCount(); i < length; i++){
-             examplesList.getChildAt(i).ios.layer.masksToBounds = true;
+            examplesList.getChildAt(i).ios.layer.masksToBounds = true;
         }
     }
-    
+
     // To allow the intro things to appear under the ActionBar:
     GridLayout.setRow(page.content, 0);
     GridLayout.setRowSpan(page.content, 2);
@@ -50,7 +50,7 @@ export function toggleWrapLayout(e: any) {
 export function navigateToExampleGroup(args: gestures.GestureEventData) {
     prof.start("group");
     let page = <pages.Page>(<View>args.object).page;
-    (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
+    // modules30: (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
     var exampleGroup = <examplesVM.ExampleGroup>(<any>args).object.bindingContext;
     var context = new groupPageVM.GroupPageViewModel(exampleGroup);
     navigator.navigateToExampleGroup(context);
@@ -70,30 +70,30 @@ export function navigateToExample(args: gestures.GestureEventData) {
         return;
     }
     prof.start("example");
-    (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
+    // modules30: (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
     var example = <examplesVM.Example>(<any>args).object.bindingContext;
     navigator.navigateToExample(example, examplesVM.featuredExamples);
 }
 
 export function showSlideout(args) {
     let page = <pages.Page>(<View>args.object).page;
-    (<RadSideDrawer>page.getViewById("side-drawer")).toggleDrawerState();
+    // modules30: (<RadSideDrawer>page.getViewById("side-drawer")).toggleDrawerState();
 }
 
 export function tapHome(args) {
     let page = <pages.Page>(<View>args.object).page;
-    (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
+    // modules30: (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
 }
 
 export function tapAbout(args) {
     let page = <pages.Page>(<View>args.object).page;
-    (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
+    // modules30: (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
     navigator.navigateToAbout();
 }
 
 export function tapDrawerLink(args) {
     let page = <pages.Page>(<View>args.object).page;
-    (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
+    // modules30: (<RadSideDrawer>page.getViewById("side-drawer")).closeDrawer();
     navigator.openLink(args.object);
 }
 
@@ -115,13 +115,13 @@ export function enter(args, event) {
     }
     trackEvent(event);
     (<any>page).entered = true;
-    let content = page.getViewById("content");
+    let content = page.getViewById<View>("content");
     content.isEnabled = true;
     content.opacity = 1;
     startEnterAnimation(page);
     startExamplesAnimation(page);
     setTimeout(() => {
-        page.getViewById("intro-elements").visibility = "collapsed";
+        page.getViewById<View>("intro-elements").visibility = "collapse";
 
         onAfterIntro();
     }, 1500);
@@ -148,7 +148,7 @@ function startExamplesAnimation(page: pages.Page) {
     }
 }
 function showActionBar(page: pages.Page) {
-    var introElements = page.getViewById("intro-elements");
+    var introElements = page.getViewById<View>("intro-elements");
     if (introElements.ios) {
         setTimeout(() => {
             introElements.margin = "-44 0 0 0";

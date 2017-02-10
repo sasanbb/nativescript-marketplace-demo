@@ -25,19 +25,20 @@ export class ExamplePage extends pages.Page {
 
         // TODO: Hides the back button for iOS, check if this can be set in XML or with cross platform API.
         this.on("navigatingTo", args => {
-            if (!this.sidedrawer) {
-                var root = this.content;
-                var originalRootBindingContext = root.bindingContext;
-                var menuPath = knownFolders.currentApp().path + "/examples/example-menu.xml";
-                var menufragment = <View>builder.load(menuPath, require("./example-menu"));
-                this.sidedrawer = <RadSideDrawer>menufragment.getViewById("example-menu-drawer");
-                this.content = menufragment;
-                this.sidedrawer.mainContent = root;
-                if (root.bindingContext !== originalRootBindingContext){
-                    root.bindingContext = originalRootBindingContext;
-                }
-                this.sidedrawer.drawerContent.bindingContext = this.navigationContext;
-            }
+            //// modules30:
+            // if (!this.sidedrawer) {
+            //     var root = this.content;
+            //     var originalRootBindingContext = root.bindingContext;
+            //     var menuPath = knownFolders.currentApp().path + "/examples/example-menu.xml";
+            //     var menufragment = <View>builder.load(menuPath, require("./example-menu"));
+            //     this.sidedrawer = <RadSideDrawer>menufragment.getViewById("example-menu-drawer");
+            //     this.content = menufragment;
+            //     this.sidedrawer.mainContent = root;
+            //     if (root.bindingContext !== originalRootBindingContext){
+            //         root.bindingContext = originalRootBindingContext;
+            //     }
+            //     this.sidedrawer.drawerContent.bindingContext = this.navigationContext;
+            // }
         });
     }
 

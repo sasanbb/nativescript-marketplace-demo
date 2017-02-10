@@ -7,17 +7,17 @@ import frame = require("ui/frame");
 import exampleBase = require("./examples/example-base-page");
 import prof = require("./common/profiling");
 import * as trace from "trace";
-import * as analytics from "./common/analytics";
+// import * as analytics from "./common/analytics";
 import "./bundle-modules";
 import * as utils from "utils/utils";
 import {isIOS} from "platform";
 
 // The location of this import is important. iOS swizzles the app delegate.
 import "./common/firebase";
-
+/*
 application.on("uncaughtError", args => {
-    var error = args.android || args.ios;
-    if (error.nativeException){
+    var error: any = args.android || args.ios;
+    if (error.nativeException) {
         error = {
             name: error.name,
             message: error.message,
@@ -44,6 +44,7 @@ application.on(application.suspendEvent, data => {
         inAppTime = undefined;
     }
 });
+*/
 
 declare var org;
 if (application.android) {
@@ -55,18 +56,20 @@ if (application.android) {
             var window = activity.getWindow();
             if (window) {
                 window.setBackgroundDrawable(new android.graphics.drawable.ColorDrawable(0xFF151F2F));
-                
+
                 // Prevent the soft keyboard from hiding EditText's while typing.
-                window.setSoftInputMode(32); //android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
+                window.setSoftInputMode(32); // android.view.WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN;
             }
         }
-        
+
         // Enable ACRA Telerik Analytics crash reporting
         var packageJson = require("./package.json");
+        /*
         var analyticsProductKeyAndroid = packageJson.analyticsProductKeyAndroid;
         if (analyticsProductKeyAndroid) {
             org.nativescript.ata.AnalyticsReportSender.init(application.android.nativeApp, analyticsProductKeyAndroid);
         }
+        */
     });
 }
 

@@ -36,6 +36,10 @@ export class MainPageViewModel extends observable.Observable {
     get screenWidth(): number {
 		return paltfrom.screen.mainScreen.widthDIPs;
 	}
+
+	get halfScreenWidth(): number {
+		return Math.floor(this.screenWidth / 2);
+	}
 }
 
 export var instance = new MainPageViewModel();

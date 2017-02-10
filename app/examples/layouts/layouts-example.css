@@ -8,7 +8,7 @@
 
 @keyframes play {
     from {
-         opacity: 0.5;
+         opacity: 0;
          transform: scale(0.5, 0.5);
     }
     50% {
@@ -33,6 +33,9 @@
     margin: 2;
     animation-name: play;
     animation-duration: 0.4;
+    animation-delay: 0.1;
+    animation-fill-mode: forwards;
+    opacity: 0;
     transform: scale(0.5, 0.5);
 }
 
@@ -41,6 +44,8 @@
     margin: 2;
     animation-name: play;
     animation-duration: 0.4;
+    animation-fill-mode: forwards;
+    opacity: 0;
     transform: scale(0.5, 0.5);
 }
 
@@ -53,9 +58,10 @@
 .btn-lightblue-animated {
     background-color: #899bfe;
     margin: 2;   
-    animation-name: play;   
+    animation-name: play;
     animation-duration: 0.4;
     animation-delay: 0.1;
+    animation-fill-mode: forwards;
     opacity: 0;
     transform: scale(0.5, 0.5);
 }
@@ -63,8 +69,9 @@
 .btn-lightblue-animated2 {
     background-color: #899bfe;
     margin: 2;   
-    animation-name: play;   
+    animation-name: play;
     animation-duration: 0.4;
+    animation-fill-mode: forwards;
     opacity: 0;
     transform: scale(0.5, 0.5);
 }
@@ -78,7 +85,7 @@
 .btn-lightgreen-animated {
     background-color: #455b66;
     margin: 2;   
-    animation-name: play;    
+    animation-name: play;
     animation-duration: 0.4;
     animation-delay: 0.2;
     animation-fill-mode: forwards;
@@ -132,7 +139,7 @@
 .btn-blue-animated {
     background-color: #3c5bfe;
     margin: 2;   
-    animation-name: play;    
+    animation-name: play;
     animation-duration: 0.4;
     animation-delay: 0.4;
     animation-fill-mode: forwards;
