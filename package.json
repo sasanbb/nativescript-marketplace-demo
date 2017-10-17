@@ -11,11 +11,11 @@
   "dependencies": {
     "acra-telerik-analytics": "~0.0.3",
     "highlight.js": "~8.7.0",
-    "nativescript-fresco": "~3.0.2",
+    "nativescript-fresco": "~3.0.6",
     "nativescript-iqkeyboardmanager": "~1.0.1",
-    "nativescript-plugin-firebase": "^3.12.0",
+    "nativescript-plugin-firebase": "^4.1.2",
+    "nativescript-pro-ui": "next",
     "nativescript-telerik-analytics": "~1.0.8",
-    "nativescript-telerik-ui-pro": "next",
     "tns-core-modules": "next"
   },
   "devDependencies": {
@@ -30,15 +30,16 @@
     "json-loader": "^0.5.4",
     "lazy": "1.0.11",
     "nativescript-css-loader": "~0.26.0",
-    "nativescript-dev-typescript": "~0.4.3",
+    "nativescript-dev-typescript": "~0.5.1",
     "nativescript-dev-webpack": "next",
     "raw-loader": "~0.5.1",
     "resolve-url-loader": "~2.0.2",
     "shelljs": "^0.5.3",
-    "typescript": "2.3.4",
+    "typescript": "2.4.1",
     "webpack": "^3.0.0",
     "webpack-bundle-analyzer": "^2.8.2",
-    "webpack-sources": "~1.0.1"
+    "webpack-sources": "~1.0.1",
+    "nativescript-worker-loader": "~0.8.1"
   },
   "scripts": {
     "postinstall": "(cd node_modules/nativescript-plugin-firebase && npm run setup)",
