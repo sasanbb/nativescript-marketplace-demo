@@ -19,13 +19,15 @@ npm install
 echo "****** APP TYPE *****"
 echo $APP_TYPE
 
-if [ $APP_TYPE == "<APP_TYPE redacted>" ]; then
-	echo "This is an <APP_TYPE redacted> app!"
+if [ $APP_TYPE == "android" ]; then
+	echo "This is an android app!"
+
   echo "******** Build NativeScript <APP_TYPE redacted> Project *************"
-  tns build <APP_TYPE redacted>
+  tns build android
+
   # Run Pod install
   echo "******** Enter platforms folder *************"
-  cd platforms/<APP_TYPE redacted>
+  cd platforms/android
 
   # List files
   echo "******** List files *************"
